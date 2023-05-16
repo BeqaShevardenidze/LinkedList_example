@@ -27,7 +27,9 @@ print("""
 ---------------------------------------------------------------
 {12} - linked list-ის შემოტრიალება, leet code
 ---------------------------------------------------------------
-{13} - linked list 
+{13} - linked list-ის პირველი 5 ელემენტის გამოტანა
+---------------------------------------------------------------
+{14} - linked list გარჩევა
 """)
 
 x = input(">>>> ")
@@ -476,18 +478,24 @@ match x:
                 node3.next = node4
 
                 return node0
-        
+            
+        node_head = LinkedList().f_node()
 
-        # node = LinkedList().f_node()
-        # print(node.next)
+        position = 1
 
-        nodeCreat = LinkedList().creat()
-        node_head = nodeCreat.head
-        length = nodeCreat.length()
+        while node_head is not None:
+            if position == 4:
+                element = node_head.next
+                print(element)
+                break
+            node_head == node_head.next
+            position+=1
 
-        print(node_head)
 
-        # for i in range(length):
-        #     node_head = node_head.next
-        #     if i == 5:
-        #         print(node_head)
+# ///////////////////////////////////////////////////////
+    case '14':
+        Cls()
+        class Node:
+            def __init__(self, data = None, next = None) -> None:
+                self.data = data
+                self.next = next
