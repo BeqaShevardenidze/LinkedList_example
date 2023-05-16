@@ -23,8 +23,11 @@ print("""
 {10} -  linked list-ის ზომის გაგება temp ელემენტის გარეშე
         კითხვა: head-ს საიდან გადაეცემა next-ი?
 ---------------------------------------------------------------
-{11} - linked list-ის შემოტრიალება, უკუღმა დალაგება
+{11} - linked list-ის შემოტრიალება, მრავალჯერ გამოძახება. init() ფუნქცია
+---------------------------------------------------------------
 {12} - linked list-ის შემოტრიალება, leet code
+---------------------------------------------------------------
+{13} - linked list 
 """)
 
 x = input(">>>> ")
@@ -359,25 +362,21 @@ match x:
                     self.head = self.head.next
                 return f"linked list length = {count} element"
             
-            def rotate(self):
-                new_linked_list = []
-                while self.head:
-                    self.head = self.head.next
-                    print(self.head)
-                    # return new_linked_list.append(self.head)
+            def init(self):
+                linked_list = LinkedList()
+                temp = Node(0)
+                linked_list.head = temp
+                for i in range(1, 11):
+                    temp.next = Node(i)
+                    temp = temp.next
+                return linked_list
             
-
         linked_list = LinkedList()
-        temp = Node(0)
-        linked_list.head = temp
-        for i in range(1, 11):
-            temp.next = Node(i)
-            temp = temp.next
 
-        print(linked_list)
-        print(linked_list.length())
-
-        linked_list.rotate()
+        print(linked_list.init())
+        print(linked_list.init())
+        print(linked_list.init())
+        print(linked_list.init())
 
 
 # ///////////////////////////////////////////////////////
@@ -419,3 +418,76 @@ match x:
 
         print(listnode_1)
         print(linkedlist1.reverseList(listnode_1))
+
+
+# ///////////////////////////////////////////////////////
+    case '13':
+        Cls()
+        class Node:
+            def __init__(self, data) -> None:
+                self.data = data
+                self.next = None
+
+            def __str__(self) -> str:
+                return f"[{self.data}]->{self.next}"
+            
+        class LinkedList:
+            def __init__(self) -> None:
+                self.head = None
+            
+            def __str__(self) -> str:
+                return str(self.head)
+            
+            def length(self):
+                count = 0
+                while self.head:
+                    count+=1
+                    self.head = self.head.next
+                return count
+                
+            def creat(self):
+                linked_list = LinkedList()
+                node = Node(0)
+                linked_list.head = node
+                for i in range(1, 11):
+                    node.next = Node(i)
+                    node = node.next
+                return linked_list
+
+            def create_rand(self):
+                linked_list = LinkedList()
+                node = Node(random.randint(0,101))
+                linked_list.head = node
+                for i in range(0,10):
+                    node.next = Node(random.randint(0,101))
+                    node = node.next
+                return linked_list
+            
+            def f_node(self):
+                node0 = Node(0)
+                node1 = Node(1)
+                node2 = Node(2)
+                node3 = Node(3)
+                node4 = Node(4)
+
+                node0.next = node1
+                node1.next = node2
+                node2.next = node3
+                node3.next = node4
+
+                return node0
+        
+
+        # node = LinkedList().f_node()
+        # print(node.next)
+
+        nodeCreat = LinkedList().creat()
+        node_head = nodeCreat.head
+        length = nodeCreat.length()
+
+        print(node_head)
+
+        # for i in range(length):
+        #     node_head = node_head.next
+        #     if i == 5:
+        #         print(node_head)
