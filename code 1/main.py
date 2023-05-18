@@ -29,7 +29,9 @@ print("""
 ---------------------------------------------------------------
 {13} - linked list-ის პირველი 5 ელემენტის გამოტანა
 ---------------------------------------------------------------
-{14} - linked list გარჩევა
+{14} - linked list append
+{15} - linked list append for Loop
+{16} - linked list append for Loop random
 """)
 
 x = input(">>>> ")
@@ -496,6 +498,114 @@ match x:
     case '14':
         Cls()
         class Node:
-            def __init__(self, data = None, next = None) -> None:
+            def __init__(self, data) -> None:
                 self.data = data
-                self.next = next
+                self.next = None
+
+            def __str__(self) -> str:
+                return f"[{self.data}]->{self.next}"
+            
+        class LinkedList:
+            def __init__(self, value) -> None:
+                self.head = Node(value)
+
+            def append(self,value):
+                current_node = self.head
+                while current_node.next:
+                    current_node = self.head.next
+                new_node = Node(value)
+                current_node.next = new_node
+
+            def __str__(self) -> str:
+                return str(self.head)
+            
+        linked_list = LinkedList(0)
+        linked_list.append(1)
+        linked_list.append(2)
+        print(linked_list)
+
+
+# ///////////////////////////////////////////////////////
+    case '15':
+        Cls()
+        class Node:
+            def __init__(self,data) -> None:
+                self.data = data
+                self.next = None
+
+            def __str__(self) -> str:
+                if self.next:
+                    return f"[{self.data}]->{self.next}"
+                else:
+                    return f"[{self.data}]"
+
+            
+        class LinkedList:
+            def __init__(self,value) -> None:
+                self.head = Node(value)
+
+            def append(self, value):
+                carrent_node = self.head
+                while carrent_node.next:
+                    carrent_node = carrent_node.next
+                new_node = Node(value)
+                carrent_node.next = new_node
+
+            def forLoop(self,index):
+                linked_list = LinkedList(1)
+                for i in range(2,index):
+                    linked_list.append(i)
+                return linked_list
+
+            def __str__(self, ) -> str:
+                return str(self.head)
+            
+        linked_list = LinkedList(0)
+        new_list = linked_list.forLoop(11)
+        print(new_list)
+
+
+# ///////////////////////////////////////////////////////
+    case '16':
+        Cls()
+        class Node:
+            def __init__(self,data) -> None:
+                self.data = data
+                self.next = None
+
+            def __str__(self) -> str:
+                if self.next:
+                    return f"[{self.data}]->{self.next}"
+                else:
+                    return f"[{self.data}]"
+                
+        class LinkedList:
+            def __init__(self,value) -> None:
+                self.head = Node(value)
+
+            def append(self, value):
+                carrent_node = self.head
+                while carrent_node.next:
+                    carrent_node = carrent_node.next
+                new_node = Node(value)
+                carrent_node.next = new_node
+
+            def forLoop(self,index):
+                linked_list = LinkedList(1)
+                for i in range(2,index):
+                    linked_list.append(i)
+                return linked_list
+
+            def for_rand(self,):
+                linked_list = LinkedList(random.randint(0,101))
+                for i in range(10):
+                    linked_list.append(random.randint(0,101))
+                return linked_list
+
+            def __str__(self) -> str:
+                return str(self.head)
+            
+        linked_list = LinkedList(0).for_rand()
+        print(linked_list); print()
+
+        
