@@ -13,7 +13,7 @@ print("""
                 სტრუქტურულად როგორ ამატებს ერთ ელემენტს მეორეს
 {4} -  მეორე ეტაპის გარჩევა, ელემენტების ციკლით დამატება Node-ში
 {5} -  მეორე ეტაპის გარჩევა, ელემენტების random-ით დამატება Node-ში
-            -------------------------------------------
+---------------------------------------------------------------
 {6} -  მეორე ეტაპის გარჩევა, მეორე კლასის დამატებით (დამატემა სათითაო ელემენტებით)
 {7} -  მეორე ეტაპის გარჩევა, მეორე კლასის დამატებით (ელემენტების დამატება ციკლით)
 {8} -  მეორე ეტაპის გარჩევა, მეორე კლასის დამატებით (ელემენტების დამატება random-ით)330-ზე მეტ ელემენტს ვერ ბეჭდავს
@@ -28,10 +28,16 @@ print("""
 {12} - linked list-ის შემოტრიალება, leet code
 ---------------------------------------------------------------
 {13} - linked list-ის პირველი 5 ელემენტის გამოტანა
----------------------------------------------------------------
+
+----------------------------Append----------------------------
 {14} - linked list append
 {15} - linked list append for Loop
 {16} - linked list append for Loop random
+
+----------------------------Insert----------------------------
+{17} - linked list inser if index == 0
+{18} - linked list inser if index == length + 1
+{19} - linked list inser if 0 < index < length + 1
 """)
 
 x = input(">>>> ")
@@ -608,4 +614,128 @@ match x:
         linked_list = LinkedList(0).for_rand()
         print(linked_list); print()
 
+
+# ///////////////////////////////////////////////////////
+    case '17':
+        Cls()
+        class Node:
+            def __init__(self, data) -> None:
+                self.data = data
+                self.next = None
+
+            def __str__(self) -> str:
+                if self.next is not None:
+                    return f"[{self.data}]->{self.next}"
+                else:
+                    return f"[{self.data}]"
+                
+        class LinkedList:
+            def __init__(self, value) -> None:
+                self.head = Node(value)
+                self.length = 1
+
+            def append(self, value):
+                current_node = self.head
+                while current_node.next:
+                    current_node = current_node.next
+                new_node = Node(value)
+                current_node.next = new_node
+                self.length += 1
+
+            def insert(self, index, value):
+                if index == 0:
+                    temp = self.head
+                    self.head = Node(value)
+                    self.head.next = temp
+                    self.length += 1
+
+
+            def __str__(self) -> str:
+                return str(self.head)
+                
         
+        node = LinkedList(0)
+        node.append(1)
+        node.append(2)
+        node.append(3)
+
+        node.insert(0,-1)
+
+        print(node)
+        print(node.length)
+
+
+# ///////////////////////////////////////////////////////
+    case '18':
+        Cls()
+        class Node:
+            def __init__(self, data) -> None:
+                self.data = data
+                self.next = None
+
+        class LinkedList:
+            def __init__(self, value) -> None:
+                self.head = Node(value)
+                self.length = 1
+
+            def append(self,value):
+                current_node = self.head
+                while current_node.next:
+                    current_node = current_node.next
+                current_node.next = Node(value)
+                self.length += 1
+
+            def insert(self, index, value):
+                last_index = self.length - 1
+                if index == 0:
+                    current_node = self.head
+                    self.head = Node(value)
+                    self.head.next = current_node
+                    self.length += 1
+                elif index == last_index + 1:
+                    self.append(value)
+
+            def printList(self):
+                current_node = self.head
+                print(current_node.data)
+                while current_node.next:
+                    current_node = current_node.next
+                    print(current_node.data)
+
+        
+        my_list = LinkedList(3)
+        my_list.append("a")
+        my_list.insert(0,-1)
+        my_list.insert(3,"b")
+        my_list.printList()
+        print("length = ",my_list.length)
+
+
+# ///////////////////////////////////////////////////////
+    case '19':
+        Cls()
+        class Node:
+            def __init__(self,data) -> None:
+                self.data = data
+                self.next = None
+
+        class LinkedList:
+            def __init__(self, value) -> None:
+                self.head = Node(value)
+
+            def append(self, value):
+                current_node = self.head
+                while current_node.next:
+                    current_node = current_node.next
+                current_node.next = Node(value)
+
+            def printList(self):
+                current_node = self.head
+                print(current_node.data)
+                while current_node.next:
+                    current_node = current_node.next
+                    print(current_node.data)
+
+        my_list = LinkedList(1)
+        my_list.append(100)
+        my_list.printList()            
